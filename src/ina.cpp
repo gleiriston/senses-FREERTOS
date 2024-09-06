@@ -107,7 +107,7 @@ void readAndTransmitInsole(void)
     char combinedStr[512];  // Aumentar o tamanho do buffer para incluir todos os dados
     int index = 0;
 
-    index += sprintf(&combinedStr[index], "%s ", getDateTime1().c_str());
+    index += sprintf(&combinedStr[index], "%s|", getDateTime1().c_str());
 
     static float previousFilteredValues[kINSOLE_CHANNELS] = {0};
 
@@ -142,8 +142,8 @@ void readAndTransmitInsole(void)
     imuGyro[1] = applyDeadZone(imuGyro[1], deadZoneThreshold);
     imuGyro[2] = applyDeadZone(imuGyro[2], deadZoneThreshold);
 
-    index += sprintf(&combinedStr[index], " | Acc: [%.2f, %.2f, %.2f]", imuAcc[0], imuAcc[1], imuAcc[2]);
-    index += sprintf(&combinedStr[index], " | Gyro: [%.2f, %.2f, %.2f]", imuGyro[0], imuGyro[1], imuGyro[2]);
+    index += sprintf(&combinedStr[index], " |Acc:%.2f, %.2f, %.2f", imuAcc[0], imuAcc[1], imuAcc[2]);
+    index += sprintf(&combinedStr[index], " |Gyro:%.2f, %.2f, %.2f", imuGyro[0], imuGyro[1], imuGyro[2]);
 
     // Imprimir os vetores de dados do IMU na saída serial
     Serial.print("IMU Acc: [");

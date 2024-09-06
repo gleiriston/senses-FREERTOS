@@ -13,4 +13,8 @@ void MyServerCallbacks::onDisconnect(BLEServer *pServer)
 {
     Serial.printf("[INFO] Client Disconnected!\n");
     device.connected = false;
+      {
+        device.active = false;
+       
+    }
 }
